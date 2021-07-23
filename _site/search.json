@@ -1,0 +1,27 @@
+{
+  "articles": [
+    {
+      "path": "index.html",
+      "title": "Assignment",
+      "description": "This is the individual assignment for ISSS608-Visual Analytics Lab. Welcome to the website. I hope you enjoy it!\n",
+      "author": [],
+      "contents": "\r\n ##About the event\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-07-23T13:49:49+08:00"
+    },
+    {
+      "path": "introduction.html",
+      "title": "Introduction",
+      "author": [],
+      "contents": "\r\nThis section is gong to introduce the background and literature review for making this report.\r\nBackground\r\nThe invention of the Internet at the end of the last century significantly speed up the production of the text data. The explosion of the data makes seeking information and understanding it difficult. Text visualization techniques can be helpful for addressing these problems. In particular, various visualizations have been designed for showing the similarity of text documents, revealing and summarizing text content, showing sentiments and emotions derived from the text data, and helping with big text data exploration. Large collections of text documents have become ubiquitous in the digital age. In areas ranging from scholarly reviews of digital libraries to legal analysis of large email databases and online social media and news data, people are increasingly faced with the daunting task of needing to understand the content of unfamiliar documents.\r\nThis assignment is focusing on the Mini Challenge 1 in 2021 which is a text-based data collection about the kidnapping of the GASTech employees byy members of the social movement group Protectors of Kronos (POK). Dataset is 2 weeks period.\r\nLiterature Review\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-07-23T18:56:01+08:00"
+    },
+    {
+      "path": "methodology.html",
+      "title": "Methodology",
+      "author": [],
+      "contents": "\r\nIn this chapter, the methods employed will be introduces.\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-07-23T13:49:55+08:00"
+    }
+  ],
+  "collections": ["posts/posts.json", "introduction/introduction.json", "Methodology/Methodology.json"]
+}

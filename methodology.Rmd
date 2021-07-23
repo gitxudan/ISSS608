@@ -1,0 +1,10 @@
+---
+title: "Methodology"
+listing: Methodology
+---
+
+
+
+In this chapter, the methods employed will be introduces.
+
+```
