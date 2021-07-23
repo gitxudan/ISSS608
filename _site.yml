@@ -11,5 +11,7 @@ navbar:
       href: introduction.html
     - text: "Methodology"
       href: methodology.html
+    - text: "Network Analysis"
+      href: network.html
       
 output: distill::distill_article
