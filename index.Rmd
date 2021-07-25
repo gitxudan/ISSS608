@@ -1,7 +1,7 @@
 ---
 title: "Assignment"
 description: |
-  This is the individual assignment for ISSS608-Visual Analytics Lab. Welcome to the website. I hope you enjoy it!
+  This is the individual assignment for ISSS608-Visual Analytics and Application. 
 site: distill::distill_website
 ---
 
@@ -11,4 +11,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 ![](AboutPic.jpg){width=60}
-##About the event
+
+## About the event
+
+Mini-Challenge 1 of VAST Challenge 2021 is a text-based data collection concerning the kidnapping of the GASTech employees by members of the social movement group Protectors of Kronos (POK).  This mini-challenge forms much of the foundation of the entire 2014 challenge as it contains information that both captures the history of the POK, GASTech, and of the region overall, and also the particulars about the kidnapping that took place.  
