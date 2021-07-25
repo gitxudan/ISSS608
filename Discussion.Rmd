@@ -19,10 +19,17 @@ For the top 3 News groups of messages numbers, we can observe the most frequentl
 ![](img/Homeland.png)
 
 
-
 ![](img/kronos.jpg)
 
+The wordcloud of  the 29 News groups gives the High-frequency vocabulary from the news. Visually, 'kronos', 'police', 'government', and 'karel' are more obvious.
+
+![](img/word.png)
+In the correlation graph below, the darker the color, the stronger the correlation between these groups.
+
+![](img/cor.png)
+Through checking, Isia Vann is one of the main subject who worked for GASTech in the security department. Also, he is the brother of one of the people who died of pollution caused by GASTech. The image below indicats that there are 162 edges going to or from Isia Vann. As we know from the given information, Isia Vann is a member of POK, therefore people who has communicated with him may be a potential members of POK network.
+
+![](img/security.png)
 
 
-
-
+Based on the assumption talked above, we can filter the email subjects and receivers that looked suspiciou. From the table above, Loreto.Bodrogi and Hennie.Osvaldo are found are employees with POK.

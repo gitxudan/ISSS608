@@ -77,17 +77,17 @@ plot(g,
      layout = layout_nicely(g))
 ```
 
-**Is there an edge going from vertex Adan.Morlun to vertex Benito.Hawelon?**
+**Is there an edge going from vertex Isia.Vann to vertex Inga Ferro?**
 ```{r}
-g['Adan.Morlun', 'Benito.Hawelon']
+g['Isia.Vann', 'Inga.Ferro']
 ```
-**Show all edges going to or from vertex Adan.Morlun**
+**Show all edges going to or from vertex Isia.Vann**
 ```{r}
-incident(g, 'Adan.Morlun', mode = c("all"))
+incident(g, 'Isia.Vann', mode = c("all"))
 ```
-**Show all edges going out from vertex Adan.Morlun**
+**Show all edges going out from vertex Isia.Vann**
 ```{r}
-incident(g, 'Adan.Morlun', mode = c("out"))
+incident(g, 'Isia.Vann', mode = c("out"))
 ```
 
 **Calculate the out-degree of each vertex**
@@ -122,12 +122,12 @@ hist(g.b, breaks = 80)
 
 **Make an ego graph**
 ```{r}
-gAM <- make_ego_graph(g, diameter(g), nodes = 'Adan.Morlun', mode = c("all"))[[1]]
+gAM <- make_ego_graph(g, diameter(g), nodes = 'Isia.Vann', mode = c("all"))[[1]]
 ```
 
-**Get a vector of geodesic distances of all vertices from vertex Adan.Morlun**
+**Get a vector of geodesic distances of all vertices from vertex Isia.Vann**
 ```{r}
-dists <- distances(gAM, "Adan.Morlun")
+dists <- distances(gAM, "Isia.Vann")
 ```
 
 **Create a color palette of length equal to the maximal geodesic distance plus one.**
@@ -141,7 +141,7 @@ V(gAM)$color <- colors[dists+1]
 ```
 
 
-**Visualize the network based on geodesic distance from vertex Adan.Morlun (patient zero).**
+**Visualize the network based on geodesic distance from vertex Isia.Vann (patient zero).**
 
 ```{r}
 plot(gAM, 
