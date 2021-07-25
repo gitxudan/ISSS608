@@ -1,14 +1,14 @@
 ---
 title: "Introduction"
-listing: introduction
 ---
 
 
 This section is gong to introduce the background and literature review for making this report.
 
 ## Background
-The invention of the Internet at the end of the last century significantly speed up the production of the text data. The explosion of the data makes seeking information and understanding it difficult. Text visualization techniques can be helpful for addressing these problems. In particular, various visualizations have been designed for showing the similarity of text documents, revealing and summarizing text content, showing sentiments and emotions derived from the text data, and helping with big text data exploration.
-Large collections of text documents have become ubiquitous in the digital age. In areas ranging from scholarly reviews of digital libraries to legal analysis of large email databases and online social media and news data, people are increasingly faced with the daunting task of needing to understand the content of unfamiliar documents.  
-This assignment is focusing on the Mini Challenge 1 in 2021 which is a text-based data collection about the kidnapping of the GASTech employees byy members of the social movement group Protectors of Kronos (POK). Dataset is 2 weeks period.
+The invention of the Internet at the end of the last century significantly speed up the production of the text data. The explosion of the data makes seeking information and understanding it difficult. In particular, large collections of text documents have become ubiquitous in the digital age. In areas ranging from scholarly reviews of digital libraries to legal analysis of large email databases and online social media and news data, people are increasingly faced with the daunting task of needing to understand the content of unfamiliar documents. Text visualization techniques can be helpful for addressing these problems.
+
+This assignment is going to analyze and discuss the Mini Challenge 1 (MC1) in 2021 and observe some insights. MC1 is a text-based data collection about the kidnapping of the GASTech employees by members of the social movement group Protectors of Kronos (POK). The main dataset used in this assignment is a News Article folder containing 29 news groups, a csv. file of Email headers data for GASTech organization, and some introductory articles of text data. 
 
 ## Literature Review
+Previous work done by Bertjan B. and Fintan M. (2014) has wrote a number of R scriptd that mentioned using to explore the structure of the Protectors of Kronos network. They employed a couple of helpful function and interactive interface of RStudio to do the cleaning and analysis on the unstructured text data. Although they specifically mentioned that this tool may not help them much under with the analysis under time pressure, it is enough to inspire me for the design of visual analytic using RStudio to tackle the messy data in this challenge. 

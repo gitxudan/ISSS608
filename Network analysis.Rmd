@@ -3,7 +3,7 @@ title: "Network Analysis"
 ---
 The organisation has providede the csv. file of Email headers information. It is obvious that the network relationship from email header data should be drawed as direct graph. 
 
-The code chunks below are used to explore the connectioness for those email users.
+The code chunks below are used to explore the connections for those email users.
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
@@ -67,7 +67,7 @@ is.weighted(g)
 ```{r}
 table(head_of(g,E(g)))
 ```
-# Make a basic plot
+**Make a basic plot**
 ```{r}
 plot(g, 
      vertex.label.color = "black", 
@@ -77,147 +77,105 @@ plot(g,
      layout = layout_nicely(g))
 ```
 
-# Is there an edge going from vertex Adan.Morlun to vertex Benito.Hawelon?
+**Is there an edge going from vertex Adan.Morlun to vertex Benito.Hawelon?**
 ```{r}
 g['Adan.Morlun', 'Benito.Hawelon']
 ```
-# Show all edges going to or from vertex Adan.Morlun
+**Show all edges going to or from vertex Adan.Morlun**
 ```{r}
 incident(g, 'Adan.Morlun', mode = c("all"))
 ```
-# Show all edges going out from vertex Adan.Morlun
+**Show all edges going out from vertex Adan.Morlun**
 ```{r}
 incident(g, 'Adan.Morlun', mode = c("out"))
 ```
 
-# Calculate the out-degree of each vertex
+**Calculate the out-degree of each vertex**
 ```{r}
 g.outd <- degree(g, mode = c("out"))
 ```
 
-# View a summary of out-degree
+**View a summary of out-degree**
 ```{r}
 table(g.outd)
 ```
 
-# Make a histogram of out-degrees
+**Make a histogram of out-degrees**
 ```{r}
 hist(g.outd, breaks = 30)
 ```
 
-# Find the vertex that has the maximum out-degree
+**Find the vertex that has the maximum out-degree**
 ```{r}
 which.max(g.outd)
 ```
 
-# Calculate betweenness of each vertex
+**Calculate betweenness of each vertex**
 ```{r}
 g.b <- betweenness(g, directed = TRUE)
 ```
 
-# Show histogram of vertex betweenness
+**Show histogram of vertex betweenness**
 ```{r}
 hist(g.b, breaks = 80)
 ```
 
-# Make an ego graph
+**Make an ego graph**
 ```{r}
 gAM <- make_ego_graph(g, diameter(g), nodes = 'Adan.Morlun', mode = c("all"))[[1]]
 ```
 
-# Get a vector of geodesic distances of all vertices from vertex Adan.Morlun 
+**Get a vector of geodesic distances of all vertices from vertex Adan.Morlun**
 ```{r}
 dists <- distances(gAM, "Adan.Morlun")
 ```
 
-# Create a color palette of length equal to the maximal geodesic distance plus one.
+**Create a color palette of length equal to the maximal geodesic distance plus one.**
 ```{r}
 colors <- c("black", "red", "orange", "blue", "dodgerblue", "cyan")
 ```
 
-# Set color attribute to vertices of network gAM.
+**Set color attribute to vertices of network gAM.**
 ```{r}
 V(gAM)$color <- colors[dists+1]
 ```
 
-# Visualize the network based on geodesic distance from vertex Adan.Morlun (patient zero).
+
+**Visualize the network based on geodesic distance from vertex Adan.Morlun (patient zero).**
 
 ```{r}
 plot(gAM, 
      vertex.label = dists, 
      vertex.label.color = "white",
      vertex.label.cex = .006,
-     edge.color = 'black',
+     edge.color = 'darkgreen',
      vertex.size = 1,
      edge.arrow.size = .05,
      main = "Geodesic Distances from Patient Zero")
 ```
-# Inspect Forrest Gump Movie dataset
+**Inspect Forrest Gump Movie dataset**
 ```{r}
 head(email1)
 ```
 
-# Make an undirected network
 ```{r}
 g2 <- graph_from_data_frame(email1, directed = TRUE)
 ```
 
-# Identify key nodes using eigenvector centrality
+**Identify key nodes using eigenvector centrality**
 ```{r}
 g.ec <- eigen_centrality(g2)
 which.max(g.ec$vector)
 ```
 
-# Plot Forrest Gump Network
+**Plot Forrest Gump Network**
 ```{r}
 plot(g2,
 vertex.label.color = "black", 
 vertex.label.cex = 0.6,
 vertex.size = 25*(g.ec$vector),
 edge.color = 'gray88',
-main = "Forrest Email Network"
-)
-```
-# Get density of a graph
-```{r}
-gd <- edge_density(g)
-```
-
-#Get the diameter of the graph g
-```{r}
-diameter(g, directed = TRUE)
-```
-
-#Get the average path length of the graph g
-```{r}
-g.apl <- mean_distance(g, directed = FALSE)
-g.apl
-```
-
-# Assign largest cliques output to object 'lc'
-```{r}
-lc <- largest_cliques(g)
-```
-# Create two new undirected subgraphs, each containing only the vertices of each largest clique.
-
-```{r}
-gs1 <- as.undirected(subgraph(g, lc[[1]]))
-```
-
-# Plot the two largest cliques side-by-side
-
-```{r}
-par(mfrow=c(1,2))
-```
-# To plot two plots side-by-side
-```{r}
-plot(gs1,
-     vertex.label.color = "black", 
-     vertex.label.cex = 0.9,
-     vertex.size = 0,
-     edge.color = 'gray28',
-     main = "Largest Clique 1",
-     layout = layout.circle(gs1)
+main = "GASTech Email Network"
 )
 ```
 

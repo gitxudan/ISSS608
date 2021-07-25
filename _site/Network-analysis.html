@@ -2164,7 +2164,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   .distill-site-header {
     --title-size:       22px;
     --text-color:       #ff414b;
-    --text-size:        15px;
+    --text-size:        22px;
     --hover-color:      #dd424c;
     --bkgd-color:       #ffd8db;
   }
@@ -2388,7 +2388,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <p>The organisation has providede the csv. file of Email headers information. It is obvious that the network relationship from email header data should be drawed as direct graph.</p>
-<p>The code chunks below are used to explore the connectioness for those email users.</p>
+<p>The code chunks below are used to explore the connections for those email users.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>packages</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'tidytext'</span>,<span class='st'>'widyr'</span>,<span class='st'>'visNetwork'</span>,<span class='st'>'DT'</span>,<span class='st'>'dplyr'</span>,<span class='st'>'textplot'</span>,<span class='st'>'lubridate'</span>,<span class='st'>'tidyverse'</span>,<span class='st'>'tidygraph'</span>,<span class='st'>'ggraph'</span>,<span class='st'>'igraph'</span>,<span class='st'>'stringr'</span>,<span class='st'>'clock'</span><span class='op'>)</span>
@@ -2474,7 +2474,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
  52  53  54 
 168 143 117 </code></pre>
 </div>
-<h1 id="make-a-basic-plot">Make a basic plot</h1>
+<strong>Make a basic plot</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>g</span>, 
@@ -2487,7 +2487,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p><img src="Network-analysis_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
 </div>
-<h1 id="is-there-an-edge-going-from-vertex-adan.morlun-to-vertex-benito.hawelon">Is there an edge going from vertex Adan.Morlun to vertex Benito.Hawelon?</h1>
+<strong>Is there an edge going from vertex Adan.Morlun to vertex Benito.Hawelon?</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>g</span><span class='op'>[</span><span class='st'>'Adan.Morlun'</span>, <span class='st'>'Benito.Hawelon'</span><span class='op'>]</span>
@@ -2495,13 +2495,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <pre><code>[1] 9</code></pre>
 </div>
-<h1 id="show-all-edges-going-to-or-from-vertex-adan.morlun">Show all edges going to or from vertex Adan.Morlun</h1>
+<strong>Show all edges going to or from vertex Adan.Morlun</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>incident</span><span class='op'>(</span><span class='va'>g</span>, <span class='st'>'Adan.Morlun'</span>, mode <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"all"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>+ 353/8185 edges from 9e65f19 (vertex names):
+<pre><code>+ 353/8185 edges from cfb989c (vertex names):
  [1] Adan.Morlun-&gt;Ada.Campo-Corrente Adan.Morlun-&gt;Adra.Nubarron     
  [3] Adan.Morlun-&gt;Albina.Hafon       Adan.Morlun-&gt;Albina.Hafon      
  [5] Adan.Morlun-&gt;Albina.Hafon       Adan.Morlun-&gt;Albina.Hafon      
@@ -2514,13 +2514,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 [19] Adan.Morlun-&gt;Benito.Hawelon     Adan.Morlun-&gt;Benito.Hawelon    
 + ... omitted several edges</code></pre>
 </div>
-<h1 id="show-all-edges-going-out-from-vertex-adan.morlun">Show all edges going out from vertex Adan.Morlun</h1>
+<strong>Show all edges going out from vertex Adan.Morlun</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>incident</span><span class='op'>(</span><span class='va'>g</span>, <span class='st'>'Adan.Morlun'</span>, mode <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"out"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>+ 154/8185 edges from 9e65f19 (vertex names):
+<pre><code>+ 154/8185 edges from cfb989c (vertex names):
  [1] Adan.Morlun-&gt;Ada.Campo-Corrente Adan.Morlun-&gt;Adra.Nubarron     
  [3] Adan.Morlun-&gt;Albina.Hafon       Adan.Morlun-&gt;Albina.Hafon      
  [5] Adan.Morlun-&gt;Albina.Hafon       Adan.Morlun-&gt;Albina.Hafon      
@@ -2533,14 +2533,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 [19] Adan.Morlun-&gt;Benito.Hawelon     Adan.Morlun-&gt;Benito.Hawelon    
 + ... omitted several edges</code></pre>
 </div>
-<h1 id="calculate-the-out-degree-of-each-vertex">Calculate the out-degree of each vertex</h1>
+<strong>Calculate the out-degree of each vertex</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>g.outd</span> <span class='op'>&lt;-</span> <span class='fu'>degree</span><span class='op'>(</span><span class='va'>g</span>, mode <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"out"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<h1 id="view-a-summary-of-out-degree">View a summary of out-degree</h1>
+<strong>View a summary of out-degree</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>g.outd</span><span class='op'>)</span>
@@ -2556,7 +2556,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
  204  209  289  299  627 1119 
    1    1    1    1    1    1 </code></pre>
 </div>
-<h1 id="make-a-histogram-of-out-degrees">Make a histogram of out-degrees</h1>
+<strong>Make a histogram of out-degrees</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>g.outd</span>, breaks <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span>
@@ -2564,7 +2564,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p><img src="Network-analysis_files/figure-html5/unnamed-chunk-16-1.png" width="624" /></p>
 </div>
-<h1 id="find-the-vertex-that-has-the-maximum-out-degree">Find the vertex that has the maximum out-degree</h1>
+<strong>Find the vertex that has the maximum out-degree</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/which.min.html'>which.max</a></span><span class='op'>(</span><span class='va'>g.outd</span><span class='op'>)</span>
@@ -2573,14 +2573,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre><code>Mat.Bramar 
         41 </code></pre>
 </div>
-<h1 id="calculate-betweenness-of-each-vertex">Calculate betweenness of each vertex</h1>
+<strong>Calculate betweenness of each vertex</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>g.b</span> <span class='op'>&lt;-</span> <span class='fu'>betweenness</span><span class='op'>(</span><span class='va'>g</span>, directed <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<h1 id="show-histogram-of-vertex-betweenness">Show histogram of vertex betweenness</h1>
+<strong>Show histogram of vertex betweenness</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>g.b</span>, breaks <span class='op'>=</span> <span class='fl'>80</span><span class='op'>)</span>
@@ -2588,42 +2588,42 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p><img src="Network-analysis_files/figure-html5/unnamed-chunk-19-1.png" width="624" /></p>
 </div>
-<h1 id="make-an-ego-graph">Make an ego graph</h1>
+<strong>Make an ego graph</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>gAM</span> <span class='op'>&lt;-</span> <span class='fu'>make_ego_graph</span><span class='op'>(</span><span class='va'>g</span>, <span class='fu'>diameter</span><span class='op'>(</span><span class='va'>g</span><span class='op'>)</span>, nodes <span class='op'>=</span> <span class='st'>'Adan.Morlun'</span>, mode <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"all"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
 </code></pre>
 </div>
 </div>
-<h1 id="get-a-vector-of-geodesic-distances-of-all-vertices-from-vertex-adan.morlun">Get a vector of geodesic distances of all vertices from vertex Adan.Morlun</h1>
+<strong>Get a vector of geodesic distances of all vertices from vertex Adan.Morlun</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>dists</span> <span class='op'>&lt;-</span> <span class='fu'>distances</span><span class='op'>(</span><span class='va'>gAM</span>, <span class='st'>"Adan.Morlun"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<h1 id="create-a-color-palette-of-length-equal-to-the-maximal-geodesic-distance-plus-one.">Create a color palette of length equal to the maximal geodesic distance plus one.</h1>
+<strong>Create a color palette of length equal to the maximal geodesic distance plus one.</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>colors</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"black"</span>, <span class='st'>"red"</span>, <span class='st'>"orange"</span>, <span class='st'>"blue"</span>, <span class='st'>"dodgerblue"</span>, <span class='st'>"cyan"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<h1 id="set-color-attribute-to-vertices-of-network-gam.">Set color attribute to vertices of network gAM.</h1>
+<strong>Set color attribute to vertices of network gAM.</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>V</span><span class='op'>(</span><span class='va'>gAM</span><span class='op'>)</span><span class='op'>$</span><span class='va'>color</span> <span class='op'>&lt;-</span> <span class='va'>colors</span><span class='op'>[</span><span class='va'>dists</span><span class='op'>+</span><span class='fl'>1</span><span class='op'>]</span>
 </code></pre>
 </div>
 </div>
-<h1 id="visualize-the-network-based-on-geodesic-distance-from-vertex-adan.morlun-patient-zero.">Visualize the network based on geodesic distance from vertex Adan.Morlun (patient zero).</h1>
+<p><strong>Visualize the network based on geodesic distance from vertex Adan.Morlun (patient zero).</strong></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>gAM</span>, 
      vertex.label <span class='op'>=</span> <span class='va'>dists</span>, 
      vertex.label.color <span class='op'>=</span> <span class='st'>"white"</span>,
      vertex.label.cex <span class='op'>=</span> <span class='fl'>.006</span>,
-     edge.color <span class='op'>=</span> <span class='st'>'black'</span>,
+     edge.color <span class='op'>=</span> <span class='st'>'darkgreen'</span>,
      vertex.size <span class='op'>=</span> <span class='fl'>1</span>,
      edge.arrow.size <span class='op'>=</span> <span class='fl'>.05</span>,
      main <span class='op'>=</span> <span class='st'>"Geodesic Distances from Patient Zero"</span><span class='op'>)</span>
@@ -2631,7 +2631,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p><img src="Network-analysis_files/figure-html5/unnamed-chunk-24-1.png" width="624" /></p>
 </div>
-<h1 id="inspect-forrest-gump-movie-dataset">Inspect Forrest Gump Movie dataset</h1>
+<strong>Inspect Forrest Gump Movie dataset</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>email1</span><span class='op'>)</span>
@@ -2647,14 +2647,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 5 Ada.Campo-Corr~ Felix.Balas   1/7/2014 1~ &quot;RE: Planning for staff p~
 6 Ada.Campo-Corr~ Isande.Borra~ 1/7/2014 1~ &quot;RE: Planning for staff p~</code></pre>
 </div>
-<h1 id="make-an-undirected-network">Make an undirected network</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>g2</span> <span class='op'>&lt;-</span> <span class='fu'>graph_from_data_frame</span><span class='op'>(</span><span class='va'>email1</span>, directed <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<h1 id="identify-key-nodes-using-eigenvector-centrality">Identify key nodes using eigenvector centrality</h1>
+<strong>Identify key nodes using eigenvector centrality</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>g.ec</span> <span class='op'>&lt;-</span> <span class='fu'>eigen_centrality</span><span class='op'>(</span><span class='va'>g2</span><span class='op'>)</span>
@@ -2664,7 +2663,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre><code>Mat.Bramar 
         41 </code></pre>
 </div>
-<h1 id="plot-forrest-gump-network">Plot Forrest Gump Network</h1>
+<strong>Plot Forrest Gump Network</strong>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>g2</span>,
@@ -2672,73 +2671,13 @@ vertex.label.color <span class='op'>=</span> <span class='st'>"black"</span>,
 vertex.label.cex <span class='op'>=</span> <span class='fl'>0.6</span>,
 vertex.size <span class='op'>=</span> <span class='fl'>25</span><span class='op'>*</span><span class='op'>(</span><span class='va'>g.ec</span><span class='op'>$</span><span class='va'>vector</span><span class='op'>)</span>,
 edge.color <span class='op'>=</span> <span class='st'>'gray88'</span>,
-main <span class='op'>=</span> <span class='st'>"Forrest Email Network"</span>
+main <span class='op'>=</span> <span class='st'>"GASTech Email Network"</span>
 <span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="Network-analysis_files/figure-html5/unnamed-chunk-28-1.png" width="624" /></p>
 </div>
-<h1 id="get-density-of-a-graph">Get density of a graph</h1>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>gd</span> <span class='op'>&lt;-</span> <span class='fu'>edge_density</span><span class='op'>(</span><span class='va'>g</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-#Get the diameter of the graph g
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>diameter</span><span class='op'>(</span><span class='va'>g</span>, directed <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] 2</code></pre>
-</div>
-#Get the average path length of the graph g
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>g.apl</span> <span class='op'>&lt;-</span> <span class='fu'>mean_distance</span><span class='op'>(</span><span class='va'>g</span>, directed <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-<span class='va'>g.apl</span>
-</code></pre>
-</div>
-<pre><code>[1] 1.1174</code></pre>
-</div>
-<h1 id="assign-largest-cliques-output-to-object-lc">Assign largest cliques output to object ‘lc’</h1>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lc</span> <span class='op'>&lt;-</span> <span class='fu'>largest_cliques</span><span class='op'>(</span><span class='va'>g</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<h1 id="create-two-new-undirected-subgraphs-each-containing-only-the-vertices-of-each-largest-clique.">Create two new undirected subgraphs, each containing only the vertices of each largest clique.</h1>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>gs1</span> <span class='op'>&lt;-</span> <span class='fu'>as.undirected</span><span class='op'>(</span><span class='fu'>subgraph</span><span class='op'>(</span><span class='va'>g</span>, <span class='va'>lc</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<h1 id="plot-the-two-largest-cliques-side-by-side">Plot the two largest cliques side-by-side</h1>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mfrow<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<h1 id="to-plot-two-plots-side-by-side">To plot two plots side-by-side</h1>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>gs1</span>,
-     vertex.label.color <span class='op'>=</span> <span class='st'>"black"</span>, 
-     vertex.label.cex <span class='op'>=</span> <span class='fl'>0.9</span>,
-     vertex.size <span class='op'>=</span> <span class='fl'>0</span>,
-     edge.color <span class='op'>=</span> <span class='st'>'gray28'</span>,
-     main <span class='op'>=</span> <span class='st'>"Largest Clique 1"</span>,
-     layout <span class='op'>=</span> <span class='fu'>layout.circle</span><span class='op'>(</span><span class='va'>gs1</span><span class='op'>)</span>
-<span class='op'>)</span>
-</code></pre>
-</div>
-<p><img src="Network-analysis_files/figure-html5/unnamed-chunk-35-1.png" width="624" /></p>
-</div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
