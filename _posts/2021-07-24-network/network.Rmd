@@ -1,7 +1,5 @@
 ---
 title: "Exploring the netework relationship"
-description: |
-  A short description of the post.
 output:
   distill::distill_article:
     self_contained: false
@@ -9,8 +7,33 @@ output:
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(fig.retina = 3,
+                      echo = TRUE, 
+                      eval = TRUE,
+                      error = FALSE, 
+                      message=FALSE, 
+                      warning=FALSE)
 ```
 
+```{r}
+packages = c('tidytext','widyr','visNetwork','DT','dplyr','textplot','lubridate','tidyverse','tidygraph','ggraph','igraph','stringr')
+for (p in packages){
+  if (!require(p,character.only = T)){
+    install.packages(p)
+  }
+  library(p,character.only = T)
+}
+```
 
+```{r}
+email <- read_csv("data/emailheader.csv")
+```
 
+## ```{r}
+library(tidyr)
+raw <- separate(email, col = From, into = c("from", "suffix"), sep = "@")
+ 
+           
+         
+      

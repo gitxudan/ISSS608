@@ -1,30 +1,223 @@
 ---
 title: "Network Analysis"
-author: "Xu Dan"
-date: "7/23/2021"
-output: html_document
 ---
+The organisation has providede the csv. file of Email headers information. It is obvious that the network relationship from email header data should be drawed as direct graph. 
+
+The code chunks below are used to explore the connectioness for those email users.
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(fig.retina = 3,
+                      echo = TRUE, 
+                      eval = TRUE,
+                      error = FALSE, 
+                      message=FALSE, 
+                      warning=FALSE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+packages = c('tidytext','widyr','visNetwork','DT','dplyr','textplot','lubridate','tidyverse','tidygraph','ggraph','igraph','stringr','clock')
+for (p in packages){
+  if (!require(p,character.only = T)){
+    install.packages(p)
+  }
+  library(p,character.only = T)
+}
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+email <- read_csv("data/emailheader.csv")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+library(tidyr)
+raw <- separate(email, col = From, into = c("from", "suffix"), sep = "@")
+```
+
+```{r}
+view_data <- raw %>%
+  group_by(from) %>%
+  summarize(number_rows = n())
+```
+
+```{r}
+view_data <- raw %>%
+  select(-c(suffix))%>%
+  separate_rows(To, sep = ", ") 
+```
+
+```{r data preparation}
+email1 <- separate(view_data, col = To, into = c("to", "suff"), sep = "@") %>%
+  select(-c(suff))%>%
+  filter(from!=to)%>%
+  arrange(from) 
+```
+
+```{r}
+g <- graph_from_data_frame(email1, directed = TRUE) 
+```
+
+```{r}
+is.directed(g)
+```
+```{r}
+is.weighted(g)
+```
+```{r}
+table(head_of(g,E(g)))
+```
+# Make a basic plot
+```{r}
+plot(g, 
+     vertex.label.color = "black", 
+     edge.color = 'gray77',
+     vertex.size = 1,
+     edge.arrow.size = 0.3,
+     layout = layout_nicely(g))
+```
+
+# Is there an edge going from vertex Adan.Morlun to vertex Benito.Hawelon?
+```{r}
+g['Adan.Morlun', 'Benito.Hawelon']
+```
+# Show all edges going to or from vertex Adan.Morlun
+```{r}
+incident(g, 'Adan.Morlun', mode = c("all"))
+```
+# Show all edges going out from vertex Adan.Morlun
+```{r}
+incident(g, 'Adan.Morlun', mode = c("out"))
+```
+
+# Calculate the out-degree of each vertex
+```{r}
+g.outd <- degree(g, mode = c("out"))
+```
+
+# View a summary of out-degree
+```{r}
+table(g.outd)
+```
+
+# Make a histogram of out-degrees
+```{r}
+hist(g.outd, breaks = 30)
+```
+
+# Find the vertex that has the maximum out-degree
+```{r}
+which.max(g.outd)
+```
+
+# Calculate betweenness of each vertex
+```{r}
+g.b <- betweenness(g, directed = TRUE)
+```
+
+# Show histogram of vertex betweenness
+```{r}
+hist(g.b, breaks = 80)
+```
+
+# Make an ego graph
+```{r}
+gAM <- make_ego_graph(g, diameter(g), nodes = 'Adan.Morlun', mode = c("all"))[[1]]
+```
+
+# Get a vector of geodesic distances of all vertices from vertex Adan.Morlun 
+```{r}
+dists <- distances(gAM, "Adan.Morlun")
+```
+
+# Create a color palette of length equal to the maximal geodesic distance plus one.
+```{r}
+colors <- c("black", "red", "orange", "blue", "dodgerblue", "cyan")
+```
+
+# Set color attribute to vertices of network gAM.
+```{r}
+V(gAM)$color <- colors[dists+1]
+```
+
+# Visualize the network based on geodesic distance from vertex Adan.Morlun (patient zero).
+
+```{r}
+plot(gAM, 
+     vertex.label = dists, 
+     vertex.label.color = "white",
+     vertex.label.cex = .006,
+     edge.color = 'black',
+     vertex.size = 1,
+     edge.arrow.size = .05,
+     main = "Geodesic Distances from Patient Zero")
+```
+# Inspect Forrest Gump Movie dataset
+```{r}
+head(email1)
+```
+
+# Make an undirected network
+```{r}
+g2 <- graph_from_data_frame(email1, directed = TRUE)
+```
+
+# Identify key nodes using eigenvector centrality
+```{r}
+g.ec <- eigen_centrality(g2)
+which.max(g.ec$vector)
+```
+
+# Plot Forrest Gump Network
+```{r}
+plot(g2,
+vertex.label.color = "black", 
+vertex.label.cex = 0.6,
+vertex.size = 25*(g.ec$vector),
+edge.color = 'gray88',
+main = "Forrest Email Network"
+)
+```
+# Get density of a graph
+```{r}
+gd <- edge_density(g)
+```
+
+#Get the diameter of the graph g
+```{r}
+diameter(g, directed = TRUE)
+```
+
+#Get the average path length of the graph g
+```{r}
+g.apl <- mean_distance(g, directed = FALSE)
+g.apl
+```
+
+# Assign largest cliques output to object 'lc'
+```{r}
+lc <- largest_cliques(g)
+```
+# Create two new undirected subgraphs, each containing only the vertices of each largest clique.
+
+```{r}
+gs1 <- as.undirected(subgraph(g, lc[[1]]))
+```
+
+# Plot the two largest cliques side-by-side
+
+```{r}
+par(mfrow=c(1,2))
+```
+# To plot two plots side-by-side
+```{r}
+plot(gs1,
+     vertex.label.color = "black", 
+     vertex.label.cex = 0.9,
+     vertex.size = 0,
+     edge.color = 'gray28',
+     main = "Largest Clique 1",
+     layout = layout.circle(gs1)
+)
+```
+

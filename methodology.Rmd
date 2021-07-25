@@ -2,11 +2,17 @@
 title: "Methodology"
 ---
 
-In this chapter, the methods employed will be introduces.
+In this chapter, the methods employed will be introduced.
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, error = FALSE, message=FALSE, warning=FALSE)
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(fig.retina = 3,
+                      echo = TRUE, 
+                      eval = TRUE,
+                      error = FALSE, 
+                      message=FALSE, 
+                      warning=FALSE)
 ```
 
 
@@ -111,27 +117,13 @@ words_by_newsgroup <- usenet_words%>%
 ```{r}
 wordcloud(words_by_newsgroup$word,
           words_by_newsgroup$n,
-          max.words = 400)
+          max.words = 150)
 ```
-
-
-```{r}
-set.seed(1234)
-
-words_by_newsgroup %>%
-  filter(n > 0)%>%
-ggplot (aes(label = word,
-              size = n)) +
-  geom_text_wordcloud() +
-  theme_minimal() +
-  facet_wrap(~newsgroup)
-```
-
 
 
 ```{r}
 tf_idf <- words_by_newsgroup %>%
-  bind_tf_idf (word, newsgroup, n) %>%
+  bind_tf_idf(word, newsgroup, n) %>%
   arrange(desc(tf_idf)) 
 ```
 
@@ -144,7 +136,16 @@ DT::datatable(tf_idf, filter = 'top') %>%
               digits = 3) %>%
   formatStyle(0,
               target = 'row',
-              lineHeight='35%')
+              lineHeight='25%')%>%
+  formatStyle('word',
+              color = 'red', 
+              backgroundColor = 'orange', 
+              fontWeight = 'bold') %>%
+  formatStyle('n',
+              background =styleColorBar(tf_idf$n,'steelblue'),
+              backgroundSize = '100% 90%', 
+              backgroundRepeat = 'no-repeat',
+              backgroundPosition = 'center') 
 ```
 
 
@@ -169,9 +170,9 @@ newsgroup_cors %>%
   geom_edge_link(aes(alpha = correlation,
                      width = correlation)) +
   geom_node_point(size = 6,
-                  color = "red") +
+                  color = "lightblue") +
   geom_node_text(aes(label = name),
-                 color = "darkorange",
+                 color = "orange",
                  repel = TRUE) +
   theme_void()
 ```
@@ -202,7 +203,9 @@ bigrams_separated <- bigrams %>%
   filter(bigram != 'NA') %>%
   separate(bigram, c("word1", "word2"),
            sep = " ")
+```
 
+```{r}
 bigrams_filtered <- bigrams_separated %>%
   filter(!word1 %in% stop_words$word) %>%
   filter(!word2 %in% stop_words$word)
@@ -251,7 +254,7 @@ ggraph(bigram_graph,
                  arrow = a,
                  end_cap = circle (.07, 'inches')) +
   geom_node_point(color = "lightblue",
-                  sizze = 5) +
+                  size = 5) +
   geom_node_text(aes(label = name),
                  vjust = 1,
                  hjust = 1)

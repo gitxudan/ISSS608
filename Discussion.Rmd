@@ -1,0 +1,9 @@
+---
+title: "Discussion"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+I subsetted the News Articles from the start of 2009 to the end of 2014 and then built the frequency chart of messages. We can find obvious peaks in some news, for example, News Online Today has a much larger number of messages than other news groups, followed by Homeland Illumination, Kronos Star, and The Abila Post. Reading the articles in these news files, especially in News Online Today, we can read that the city government and POK have a disagreement about the cause of death of Elian Karel, an employee from GASTech. 

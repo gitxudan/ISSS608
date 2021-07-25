@@ -11,7 +11,10 @@ navbar:
       href: introduction.html
     - text: "Methodology"
       href: methodology.html
-    - text: "Network Analysis"
-      href: network.html
+    - text: "Network analysis"
+      href: Network-analysis.html
+    - text: "Insights and Discussion"
+      href: Discussion.html
       
 output: distill::distill_article
+theme: "theme.css"
